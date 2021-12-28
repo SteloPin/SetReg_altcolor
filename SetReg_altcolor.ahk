@@ -22,7 +22,7 @@ p1 := "test"   ; for debug purpose
 p1 := "default" ; for debug purpose
 if ( (%0% < 2 or p1 = "?" or p1 = "h" or p1 = "help") and p1 <> "default" and p1 <> "test")
 {
-    tmp := "28.12.2021 by Stefan Lorei stelopin@gmail.com"
+    tmp := "28.12.2021 by SteLoPin stelopin@gmail.com"
 	tmp := tmp . "`r`n`r`nProgram to set registery values for key dmd_colorize if altcolor exists or is missing."
 	tmp := tmp . "`r`n`r`nPossible parameter:"
 	tmp := tmp . "`r`n`r`npath to altcolor directory e.g. ''C:\Visual Pinball\VPinMAME\altcolor''"
