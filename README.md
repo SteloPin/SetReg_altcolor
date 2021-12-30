@@ -30,8 +30,8 @@ Possible parameters are :
 	
 Default values are: writelogfile=true opennotepad=false writecsv=true createregbackup=true showconclusion=true
 	
-To start SetReg_altcolor in silent mode use e.g.
-SetReg_altcolor.exe runsilent
-or
-SetReg_altcolor.exe runsilent showconclusion=false createregbackup=true
+To start SetReg_altcolor in silent mode use e.g.   
+SetReg_altcolor.exe runsilent   
+or   
+SetReg_altcolor.exe runsilent showconclusion=false createregbackup=true   
 or any other parameter-combinations
