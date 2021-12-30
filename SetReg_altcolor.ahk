@@ -20,20 +20,20 @@ p1=%1%
 altcolor_path = %1%
 myScriptName := SubStr(A_ScriptName, 1, StrLen(A_ScriptName)-4)  ; Scriptname without .ahk or .exe   
 IniFile=%A_ScriptDir%\%myScriptName%.ini
-p1 := "default" ; for debug purpose
+;p1 := "default" ; for debug purpose
 ;p1 := "test"   ; for debug purpose
 ;p1 := "runsilent" ; for debug purpose
 ; show helptext
-if ( (%0% < 1 or p1 = "?" or p1 = "h" or p1 = "help") and p1 <> "default" and p1 <> "test" and p1 <> "runsilent")
-{
-	showHelp()	
-	ExitApp
+;if ( (%0% < 1 or p1 = "?" or p1 = "h" or p1 = "help") and p1 <> "default" and p1 <> "test" and p1 <> "runsilent")
+if (p1 = "?" or p1 = "h" or p1 = "help")
+	{
+	showHelp()
+;	ExitApp
 }
 
 ; --------------------------------
 ; Set default values then read ini
 ; --------------------------------
-readMyIniFile()
 if (p1 = "" or p1 = "default") {
 	altcolor_path = c:\Visual Pinball\VPinMAME\altcolor
 	writelogfile := true
@@ -43,7 +43,13 @@ if (p1 = "" or p1 = "default") {
 	createregbackup := true
 	runsilent := false
 }
-; Set testing values then read ini
+if (p1 = "runsilent") {
+	runsilent := true
+}
+
+readMyIniFile()
+
+; overwite ini-values for test
 if (p1 = "test") {
 	altcolor_path = c:\Visual Pinball\VPinMAME\altcolor
 	writelogfile := true
@@ -77,6 +83,10 @@ Loop, %0% {
 		createregbackup := true
 	Else If (%A_Index% = "createregbackup=false")
 		createregbackup := false
+	Else If (%A_Index% = "runsilent=true")
+		runsilent := true
+	Else If (%A_Index% = "runsilent=false")
+		runsilent := false
 	cmdparameter := cmdparameter %A_Index%  ; collect parameters
 } 
 
@@ -94,11 +104,19 @@ ifnotexist,%IniFile%
 ; --------------------
 createGUI()
 myListContent := fill_myListContent()
-;msgbox %myListContent%
+;msgbox 1:%runsilent%, 2:runsilent
 
-if (runsilent = true)
-	Goto, ButtonProcess	
-else
+if (runsilent = true) {
+	i = 0
+	Gui, Show
+	Gui, Submit, NoHide ; Save the input from the user to each control's associated variable.
+	WinMove, %A_ScriptName%, 1, 1, 1, 1
+	;i++ 
+	;msgbox %i%
+	Gosub, ButtonProcess
+	Gui, Destroy
+	ExitApp
+} else
 	Gui, Show
 return
 
@@ -193,17 +211,19 @@ readMyIniFile()
 	global IniFile ; use global var at function
 	;msgbox %IniFile%	
 	global altcolor_path 
-	IniRead, altcolor_path, %IniFile%, Main, %altcolor_path% ; value, file section, Key
+	; value, file section, Key, Default if not available
+	IniRead, altcolor_path, %IniFile%, Main, altcolor_path, %altcolor_path%
+	;msgbox ini altcolor_path=%altcolor_path%
 	global writelogfile
-	IniRead, writelogfile, %IniFile%, Main, %writelogfile%
+	IniRead, writelogfile, %IniFile%, Main, writelogfile, %writelogfile%
 	global showconclusion
-	IniRead, showconclusion, %IniFile%, Main, %showconclusion% 
+	IniRead, showconclusion, %IniFile%, Main, showconclusion, %showconclusion% 
 	global opennotepad
-	IniRead, opennotepad, %IniFile%, Main, %opennotepad%
+	IniRead, opennotepad, %IniFile%, Main, opennotepad, %opennotepad%
 	global writecsv
-	IniRead, writecsv, %IniFile%, Main, %writecsv%
+	IniRead, writecsv, %IniFile%, Main, writecsv, %writecsv%
 	global createregbackup
-	IniRead, createregbackup, %IniFile% ,Main, %createregbackup% 		
+	IniRead, createregbackup, %IniFile% ,Main, createregbackup, %createregbackup% 		
 }
 
 WriteMyIniFile()
@@ -465,7 +485,7 @@ showHelp()
 
 	SetReg_altcolor 28.12.2021 by SteLoPin stelopin@gmail.com
 
-	The program is primily used to maintain registry key dmd_colorize at HKEY_CURRENT_USER\Software\Freeware\Visual PinMame.
+	The program is primily used to maintain registry-key dmd_colorize at HKEY_CURRENT_USER\Software\Freeware\Visual PinMame.
 	
 	To setup vpinmame with colorized DMDs, file pin2dmd.pal has to be copied to the corresponding rom-folder
 	at c:\Visual Pinball\VPinMAME\altcolor\ and VPinMAME has to be configured to use the the colorized DMD.
@@ -514,11 +534,11 @@ showHelp()
 	Gui, 5: -Caption +Border +Owner1
 	;Gui, 1: +Disabled   
 	Gui, 5: Add, Text, , %Help%
-	Gui, 5: Add, Button, xp+380 yp+5 w80 , Ok
-	Gui, 5: Show, x%g2x% y%g2y% w%g2w% h%g2h%
-	
-	;MsgBox, 0, %myScriptName% Help, % Help	
-	WinMove, %myScriptName% Help, 615, 66, 951, 1134
+	Gui, 5: Add, Button, xp+380 yp+5 w80 g5ButtonOk, Ok
+	;Gui, 5: Show, x%g2x% y%g2y% w%g2w% h%g2h%
+	x := A_ScreenWidth/2  - g2w/2
+	y := A_ScreenHeight/2 - g2h/2
+	Gui, 5: Show, x%x% y%y% w%g2w% h%g2h%
 }
 ; automatic named by ahk
 5ButtonOk:
