@@ -1,7 +1,7 @@
 # SetReg_altcolor
 Program to set registery values for key dmd_colorize if altcolor-file exists or is missing.
 
-SetReg_altcolor is primily used to maintain registry key dmd_colorize at HKEY_CURRENT_USER\Software\Freeware\Visual PinMame.
+SetReg_altcolor is primily used to maintain registry key dmd_colorize at HKEY_CURRENT_USER\Software\Freeware\Visual PinMame\
 
 To setup VPinMAME with colorized DMDs, file pin2dmd.pal has to be copied to the corresponding rom-folder at  
 C:\Visual Pinball\VPinMAME\altcolor\ and VPinMAME has to be configured to use the the colorized DMD.  
@@ -20,7 +20,7 @@ SetReg_altcolor loops through all rom-registry-entries and checks, if the corres
 Before any change, a backup of registry part HKEY_CURRENT_USER\Software\Freeware\Visual PinMame can be done.   
 All changes to the registry can be logged at file SetReg_altcolor.log
 
-SetReg_altcolor can be used interactive or in silent mode only by using parameters.
+SetReg_altcolor can be used interactive or in silent mode by using parameters.
 	
 Possible parameters are :
 - Path to altcolor folder e.g. ''C:\Visual Pinball\VPinMAME\altcolor''
@@ -29,9 +29,7 @@ Possible parameters are :
 - createregbackup=true|false (optional: create a backup of registry part HKEY_CURRENT_USER\Software\Freeware\Visual PinMame)
 - showconclusion=true|false Show conclusion-window after processing
 - writecsv=true|false (optional, create a csv-file of all registry entries)
-- runsilent=true|false (optional, run without user-interaction. Uses values from file SetReg_altcolor.ini
-	
-Default values are: writelogfile=true opennotepad=false writecsv=true createregbackup=true showconclusion=true
+- runsilent=true|false (optional, run without user-interaction. Uses values from file SetReg_altcolor.ini)
 	
 To start SetReg_altcolor in silent mode use e.g.   
 SetReg_altcolor.exe runsilent   
