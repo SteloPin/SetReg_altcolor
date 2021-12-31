@@ -2,7 +2,9 @@
 Program to set registery values for key dmd_colorize if altcolor-file exists or is missing.
 
 The program is primily used to maintain registry key dmd_colorize at HKEY_CURRENT_USER\Software\Freeware\Visual PinMame.
-	
+
+<img src="https://user-images.githubusercontent.com/74100604/147819835-f0efbf9a-88d8-4b85-81f6-fe1ac8cb2399.png" width=50% height=50%>
+
 To setup VPinMAME with colorized DMDs, file pin2dmd.pal has to be copied to the corresponding rom-folder at  
 C:\Visual Pinball\VPinMAME\altcolor\ and VPinMAME has to be configured to use the the colorized DMD.  
 The VPinMAME-configuration of each rom is stored in registry-key dmd_colorize.
