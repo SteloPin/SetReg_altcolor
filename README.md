@@ -7,7 +7,7 @@ To setup VPinMAME with colorized DMDs, file pin2dmd.pal has to be copied to the 
 C:\Visual Pinball\VPinMAME\altcolor\ and VPinMAME has to be configured to use the the colorized DMD.  
 The VPinMAME-configuration of each rom is stored in registry-key dmd_colorize.
 
-Here comes SetReg_altcolor into play. [How it works](https://github.com/SteloPin/SetReg_altcolor/wiki/How-it-works).
+Here comes SetReg_altcolor into play. [How it works](https://github.com/SteloPin/SetReg_altcolor/wiki/How-it-works)
 
 <img src="https://user-images.githubusercontent.com/74100604/147820171-9a0b300e-7e24-4372-8312-897de5f51dac.png" width=50% height=50%>
 
@@ -36,3 +36,5 @@ SetReg_altcolor.exe runsilent
 or   
 SetReg_altcolor.exe runsilent showconclusion=false createregbackup=true   
 or any other parameter-combinations
+
+ [How it works](https://github.com/SteloPin/SetReg_altcolor/wiki/How-it-works)
