@@ -23,7 +23,7 @@ All changes to the registry can be logged at file SetReg_altcolor.log
 SetReg_altcolor can be used interactive or in silent mode by using parameters.
 	
 Possible parameters are :
-- Path to altcolor folder e.g. ''C:\Visual Pinball\VPinMAME\altcolor''
+- Path to altcolor folder (optional if other than "C:\Visual Pinball\VPinMAME\altcolor")
 - writelogfile=true|false (optional, create a logfile of processed registry entries)
 - opennotepad=true|false (optional: open logfile with notepad after processing)
 - createregbackup=true|false (optional: create a backup of registry part HKEY_CURRENT_USER\Software\Freeware\Visual PinMame)
