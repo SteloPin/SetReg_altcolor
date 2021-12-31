@@ -17,7 +17,7 @@ SetReg_altcolor loops through all rom-registry-entries and checks, if the corres
 
 - if the altcolor-file does not exist, but key dmd_colorize is set, then the key will be unset, which is equal to unset CheckBox 'Colorize DMD (4 colors)' at VPinMAME.
 	  
-Before any change, a backup of registry part HKEY_CURRENT_USER\Software\Freeware\Visual PinMame can be done.   
+Before any change is made, a backup of registry part HKEY_CURRENT_USER\Software\Freeware\Visual PinMame can be done.   
 All changes to the registry can be logged at file SetReg_altcolor.log
 
 SetReg_altcolor can be used interactive or in silent mode by using parameters.
