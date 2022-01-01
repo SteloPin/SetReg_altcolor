@@ -11,5 +11,5 @@ SetReg_altcolor loops through all of your altcolor-files and checks, if the VPin
 The configuration-changes can be made interactive by one click or in silent mode by using command line parameters.  
 More about the usage in the [How it works](https://github.com/SteloPin/SetReg_altcolor/wiki/How-it-works) section.
 
-<img src="https://user-images.githubusercontent.com/74100604/147820171-9a0b300e-7e24-4372-8312-897de5f51dac.png" width=50% height=50%>  
+<img src="https://user-images.githubusercontent.com/74100604/147851852-6cafd8f7-1da0-4c88-b8b7-bb3aca5da50a.png" width=50% height=50%>  
 Have fun !
