@@ -6,6 +6,8 @@
 ;----------------------------------------------------------------------------------------------------
 ; https://jacks-autohotkey-blog.com/2019/01/13/using-gui-checkbox-controls-to-set-hotstring-options-autohotkey-technique/#more-40161
 #SingleInstance force
+#NoEnv ; Avoids checking empty variables to see if they are environment variables (recommended for all new scripts).
+SetRegView 64  ; Sets the registry view used by RegRead, RegWrite, RegDelete and registry loops, allowing them in a 32-bit script to access the 64-bit registry view and vice versa.
 FormatTime, CurrentDateTime,, yyyy.MM.dd HH:mm:ss
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory
 ; initial some vars
@@ -26,9 +28,9 @@ IniFile=%A_ScriptDir%\%myScriptName%.ini
 ; show helptext
 ;if ( (%0% < 1 or p1 = "?" or p1 = "h" or p1 = "help") and p1 <> "default" and p1 <> "test" and p1 <> "runsilent")
 if (p1 = "?" or p1 = "h" or p1 = "help")
-	{
+{
 	showHelp()
-;	ExitApp
+	;	ExitApp
 }
 
 ; --------------------------------
@@ -190,7 +192,7 @@ Loop Files, %altcolor_path%\*.pal, R,F,D  ; Unterordner rekursiv durchwandern.
 		}		
 	}
 }
- ; MsgBox Ende + %i%
+; MsgBox Ende + %i%
 ExitApp
 
 RemoveToolTip:
@@ -353,16 +355,16 @@ fill_myListContent() {
 	;; ophram - Fill listView from the array:
 	;for index, element in StrSplit(myListContent, "#") ; Enumeration is the recommended approach in most cases.
 	;{
-	    ; Using "Loop", indices must be consecutive numbers from 1 to the number
-	    ; of elements in the array (or they must be calculated within the loop).
-	    ; MsgBox % "Element number " . A_Index . " is " . Array[A_Index]
-	
-	    ; Using "for", both the index (or "key") and its associated value
-	    ; are provided, and the index can be *any* value of your choosing.
-	    ; MsgBox % "Element number " . index . " is " . element
-	;	LV_Add("", StrSplit(element, "|")*) ; split the line into cells by pipes	
+		; Using "Loop", indices must be consecutive numbers from 1 to the number
+		; of elements in the array (or they must be calculated within the loop).
+		; MsgBox % "Element number " . A_Index . " is " . Array[A_Index]
+		
+		; Using "for", both the index (or "key") and its associated value
+		; are provided, and the index can be *any* value of your choosing.
+		; MsgBox % "Element number " . index . " is " . element
+		;	LV_Add("", StrSplit(element, "|")*) ; split the line into cells by pipes	
 	;}
-
+	
 	LV_ModifyCol("AutoHdr")  ; Auto-size each column to fit its contents.
 	;LV_ModifyCol(1, 120)  ; fix for Rom  width
 	LV_ModifyCol(2, "Text Center")  ; altcolor-file exist
@@ -389,7 +391,7 @@ UpdateDmdColorize()
 	dmd_colorize_set0_count = 0
 	dmd_colorize_set1_count = 0
 	rom_count = 0
-
+	
 	if (writelogfile = true) {
 		tmp := ""
 		if FileExist(myScriptName . ".log")		
